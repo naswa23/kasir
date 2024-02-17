@@ -1,0 +1,26 @@
+<?= $this->extend ('layout/awalan'); ?>
+<?= $this->section ('content'); ?>
+<body class="text-center">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <main class="form-signin">
+                    <?php if(!empty(session()->getFlashdata('error'))):?>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <?php echo session()->getFlashdata('error')?>
+                        </div>
+                    <?php endif; ?>
+                    <form method="post" action="<?=base_url();?>/login/process">
+                        <?= csrf_field();?>
+                        <h1 class="h3 mb-3 fw-normal">Login</h1>
+                        <input type="text" name="username" id="username" placeholder="username" class="form-control mb-3" required autofocus>
+                        <input type="password" name="password" id="password" placeholder="password" class="form-control mb-3" required>
+                        <button type="submit" class="w-100 btn btn-lg btn-primary">Login</button>
+                        <p class="mt-5 mb-3 text-muted">&copy; Login CI4</p>
+                    </form>
+                </main>
+            </div>
+        </div>
+    </div>
+</body>
+<?= $this->endSection ('content'); ?>
